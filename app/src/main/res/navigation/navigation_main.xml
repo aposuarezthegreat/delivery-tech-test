@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/deliveryListFragment">
+
+    <fragment
+        android:id="@+id/deliveryListFragment"
+        android:name="apo.suarez.deliverytech.ui.DeliveryListFragment"
+        tools:layout="@layout/fragment_delivery_list">
+
+        <action
+            android:id="@+id/deliveryListFragment_to_deliveryDetailsFragment"
+            app:destination="@+id/deliveryDetailsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/deliveryDetailsFragment"
+        android:name="apo.suarez.deliverytech.ui.details.DeliveryDetailsFragment"
+        tools:layout="@layout/fragment_delivery_details">
+    </fragment>
+
+
+</navigation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F58220</color>
+    <color name="colorPrimaryDark">#F58220</color>
+    <color name="colorAccent">#4A90E2</color>
+
+    <color name="llf_orange">#F58220</color>
+    <color name="llf_blue">#4A90E2</color>
+
+    <color name="hint_color">#828282</color>
+</resources>
