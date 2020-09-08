@@ -16,6 +16,8 @@ object versions {
     const val rxjava = "2.1.7"
     const val rxandroid = "2.0.1"
     const val uniflow = "0.9.5"
+    const val room = "2.2.5"
+    const val airbnb = "3.9.0"
 }
 
 object app_versions {

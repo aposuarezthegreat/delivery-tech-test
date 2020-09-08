@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/deviceCard"
+    android:id="@+id/deliveryItemCard"
     style="@style/DeliveryItemCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,22 +15,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/default_padding_8dp">
+        android:paddingHorizontal="@dimen/default_padding_16dp"
+        android:paddingVertical="@dimen/default_padding_8dp">
 
         <ImageView
             android:id="@+id/productImageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/ic_launcher_background"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
         <LinearLayout
             android:id="@+id/productDetailsLayout"
             android:layout_height="0dp"
             android:layout_width="0dp"
+            android:padding="@dimen/default_padding_8dp"
             android:orientation="vertical"
             app:layout_constrainedWidth="true"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,43 +44,47 @@
                 android:id="@+id/productPrice"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/default_margin_16dp"
                 android:layout_weight="2"
                 android:gravity="center_vertical"
                 android:textColor="@color/llf_orange"
                 android:textSize="24sp"
+                android:singleLine="true"
+                android:ellipsize="end"
                 tools:text="$23.00" />
 
             <TextView
                 android:id="@+id/productSender"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/default_margin_16dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="@color/hint_color"
-                tools:text="From: Sender" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                tools:text="From: Start Destination" />
 
             <TextView
                 android:id="@+id/productRecipient"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="@dimen/default_margin_16dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="@color/hint_color"
-                tools:text="To: Recipient" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                tools:text="To: End Destination" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/productFavouriteImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_launcher_background"
+            android:visibility="gone"
             app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/productDetailsLayout"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:srcCompat="@android:drawable/btn_star_big_off" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -60,6 +60,18 @@ object deps {
         const val rxandroid = "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}"
     }
 
+    object room {
+        const val runtime = "androidx.room:room-runtime:${versions.room}"
+        const val compiler = "androidx.room:room-compiler:${versions.room}"
+        const val room_ktx = "androidx.room:room-ktx:${versions.room}"
+        const val testing = "androidx.room:room-testing:${versions.room}"
+    }
+
+    object airbnb {
+        const val epoxy = "com.airbnb.android:epoxy:${versions.airbnb}"
+        const val epoxy_processor = "com.airbnb.android:epoxy-processor:${versions.airbnb}"
+    }
+
     object testing {
         const val junit = "junit:junit:${versions.junit}"
     }
