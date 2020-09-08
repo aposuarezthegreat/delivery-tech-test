@@ -17,6 +17,12 @@ dependencies {
     implementation(deps.androidx.navigation.fragment_ktx)
     implementation(deps.androidx.navigation.ui_ktx)
 
+    implementation(deps.airbnb.epoxy)
+    kapt(deps.airbnb.epoxy_processor)
+
+    implementation(deps.uniflow.runtime)
+    testImplementation(deps.uniflow.testing)
+
     implementation(deps.okhttp3.okhttp)
     implementation(deps.okhttp3.interceptor)
     implementation(deps.retrofit2.retrofit)
@@ -26,8 +32,9 @@ dependencies {
     implementation(deps.rxjava2.rxandroid)
     implementation(deps.gson)
 
-    implementation(deps.uniflow.runtime)
-    testImplementation(deps.uniflow.testing)
+    kapt(deps.room.compiler)
+    implementation(deps.room.runtime)
+    implementation(deps.room.room_ktx)
 
     implementation(deps.koin.android)
     implementation(deps.koin.androidx.viewmodel)

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Delivery</string>
+    <string name="label_start_destination">From: %1$s</string>
+    <string name="label_end_destination">To: %1$s</string>
+    <string name="label_page">Page %1$s</string>
+    <string name="title_route">Delivery Route</string>
+    <string name="title_item">Item Information</string>
+    <string name="title_fee">Fee</string>
+    <string name="label_delivery_fee">Delivery Fee</string>
+
+    <string name="title_my_deliveries">My Deliveries</string>
+    <string name="title_delivery_details">Delivery Details</string>
+
+    <string name="id_delivery_details_route">id-delivery-details-route</string>
+    <string name="id_delivery_details_product_info">id-delivery-details-product-info</string>
+    <string name="id_delivery_details_section">id-delivery-details-section</string>
+
+    <string name="error_delivery_list">Failed to load delivery list. Please try again.</string>
 </resources>

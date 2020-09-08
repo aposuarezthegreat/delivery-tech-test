@@ -16,6 +16,7 @@ class AndroidApplication : Plugin<Project> {
         project.plugins.apply("kotlin-android")
         project.plugins.apply("kotlin-android-extensions")
         project.plugins.apply("kotlin-kapt")
+        project.plugins.apply("androidx.navigation.safeargs.kotlin")
 
         project.androidApp {
             compileSdkVersion(app_versions.compileSdk)

@@ -8,8 +8,8 @@ interface GetDeliveryList {
     @Headers("Content-Type: application/json")
     @GET("/v2/deliveries")
     fun request(
-        @Query("offset") offset: String,
-        @Query("limit") limit: String
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
     ):  Observable<List<Model.GetDeliveryResponse>>
 }
 

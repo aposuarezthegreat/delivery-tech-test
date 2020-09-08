@@ -8,13 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import apo.suarez.deliverytech.R
-import apo.suarez.deliverytech.data.networkcalls.GetDeliveryList
 import apo.suarez.deliverytech.data.networkcalls.Model
+import apo.suarez.deliverytech.utils.DownloadImageTask
 import java.net.URL
 
 class DeliveryListAdapter :RecyclerView.Adapter<DeliveryListAdapter.ViewHolder>(){
+
+    var itemClickListener: ((Model.GetDeliveryResponse) -> Unit)? = null
 
     var deliveryList: List<Model.GetDeliveryResponse> = emptyList()
         set(value){
@@ -25,7 +28,7 @@ class DeliveryListAdapter :RecyclerView.Adapter<DeliveryListAdapter.ViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_layout_delivery, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view,itemClickListener)
     }
 
     override fun getItemCount(): Int = deliveryList.size
@@ -34,50 +37,35 @@ class DeliveryListAdapter :RecyclerView.Adapter<DeliveryListAdapter.ViewHolder>(
         holder.bind(deliveryList[position])
     }
 
-    class ViewHolder(itemView: View) :
+    class ViewHolder(itemView: View,private val itemClickListener: ((Model.GetDeliveryResponse) -> Unit)?) :
         RecyclerView.ViewHolder(itemView) {
+
+        private val productCard : CardView = itemView.findViewById(R.id.deliveryItemCard)
 
         private val productImage: ImageView = itemView.findViewById(R.id.productImageView)
 
         private val productPrice: TextView = itemView.findViewById(R.id.productPrice)
 
-        private val productSender: TextView = itemView.findViewById(R.id.productSender)
+        private val productStartDestination: TextView = itemView.findViewById(R.id.productSender)
 
-        private val productRecipient: TextView = itemView.findViewById(R.id.productRecipient)
+        private val productEndDestination: TextView = itemView.findViewById(R.id.productRecipient)
 
         private val productFavouriteImage: ImageView = itemView.findViewById(R.id.productFavouriteImageView)
 
         fun bind(item: Model.GetDeliveryResponse) {
-            DownloadImageTask(productImage)
-                .execute(item.goodsPicture)
-            productPrice.text = item.deliveryFee
-            productSender.text = item.route.start
-            productRecipient.text = item.route.end
+            val productPriceTotal : Double = getValueAsDouble(item.deliveryFee) + getValueAsDouble(item.surcharge)
+            DownloadImageTask(productImage).execute(item.goodsPicture)
+            productPrice.text = String.format("$CURRENCY_SIGN %.2f",productPriceTotal)
+            productStartDestination.text = itemView.resources.getString(R.string.label_start_destination,item.route.start)
+            productEndDestination.text = itemView.resources.getString(R.string.label_end_destination,item.route.end)
+            productCard.setOnClickListener { itemClickListener?.invoke(item) }
         }
+
+        private fun getValueAsDouble(numberString: String) : Double
+                = numberString.removePrefix(CURRENCY_SIGN).toDouble()
     }
 
-
-    private class DownloadImageTask(bmImage: ImageView) :
-        AsyncTask<String?, Void?, Bitmap?>() {
-        var bmImage: ImageView
-        override fun doInBackground(vararg urls: String?): Bitmap? {
-            val urldisplay = urls[0]
-            var mIcon11: Bitmap? = null
-            try {
-                val `in` = URL(urldisplay).openStream()
-                mIcon11 = BitmapFactory.decodeStream(`in`)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            return mIcon11
-        }
-
-        override fun onPostExecute(result: Bitmap?) {
-            bmImage.setImageBitmap(result)
-        }
-
-        init {
-            this.bmImage = bmImage
-        }
+    companion object {
+        private const val CURRENCY_SIGN = "$"
     }
 }

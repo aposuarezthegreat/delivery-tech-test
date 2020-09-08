@@ -7,5 +7,8 @@
     <color name="llf_orange">#F58220</color>
     <color name="llf_blue">#4A90E2</color>
 
+    <!-- with Opacity -->
+    <color name="llf_orange_10">#1AF58220</color>
+
     <color name="hint_color">#828282</color>
 </resources>
